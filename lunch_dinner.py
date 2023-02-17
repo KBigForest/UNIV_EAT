@@ -20,7 +20,7 @@ class Mainmenu(QMainWindow):
         self.initUI()
         
     def initUI(self):
-        self.setWindowTitle('오늘의 경북대 교직원 식당 메뉴')
+        self.setWindowTitle('')
         self.setWindowIcon(QIcon('bab.png'))
         self.setGeometry(300, 300, 640, 480)
         widget = QWidget()
@@ -70,16 +70,30 @@ if __name__ == '__main__':
     #     nowdate
     #     print('금일은 {0}년 {1}월 {2}일 {3}요일입니다.'.format(nowdate.year, nowdate.month, nowdate.day, self.get_day(nowdate.year, nowdate.month, nowdate.day)))
 
+
+
 print('-------메뉴 알리미--------')
 print('교직원 식당을 선택해주세요')
 print('1. 공대식당')
 print('2. GP감꽃푸드코트')
 print('3. 복지관 교직원식')
-now = dt.datetime.today().weekday()
-now
+
 # def menu_print():
+from bs4 import BeautifulSoup
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton,QMainWindow,QVBoxLayout,QHBoxLayout,QLabel
+from PyQt5.QtCore import QCoreApplication,QDate,Qt
+from PyQt5.QtGui import QIcon
+import requests
+from urllib.request import urlopen
+import pandas as pd
+import numpy as np
+import datetime as dt
+import calendar
 res = 1
 menu = []
+now = dt.datetime.today().weekday()
+now
 if res ==1:
     res_num = 85
     html = urlopen(f'https://coop.knu.ac.kr/sub03/sub01_01.html?shop_sqno={res_num}')
@@ -126,3 +140,4 @@ print(f'오늘 저녁메뉴 : \n{dinner_menu[now]}')
 # now
 
 # end_date+dt.timedelta(1)
+
